@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders'
+
 ]
 
 MIDDLEWARE = [
@@ -64,10 +65,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],  
+
         },
     },
 ]
+
 
 # settings.py
 
@@ -75,6 +79,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'
     # Add other allowed origins without a path
 ]
+
 
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
