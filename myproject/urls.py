@@ -8,7 +8,7 @@ import os
 
 @csrf_exempt
 def niaa_view(request):
-    os.environ["OPENAI_API_KEY"] = "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"
+    os.environ["OPENAI_API_KEY"] = "API-KEY"
     if request.method == 'POST':
         from llama_index import StorageContext, load_index_from_storage
         storage_context = StorageContext.from_defaults(persist_dir="myproject/AI")
