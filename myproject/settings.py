@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'
-
+    'corsheaders',
+    'myapp.apps.MyappConfig'
 ]
 
 MIDDLEWARE = [
@@ -76,7 +76,8 @@ TEMPLATES = [
 # settings.py
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'https://58sjgt.csb.app'
     # Add other allowed origins without a path
 ]
 

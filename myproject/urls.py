@@ -2,7 +2,8 @@
 from django.contrib import admin
 from django.urls import path
 from django.http import JsonResponse
-
+from django.db import connection
+import json
 from django.views.decorators.csrf import csrf_exempt
 import os
 
@@ -21,22 +22,24 @@ def niaa_view(request):
     else:
         return JsonResponse({"error": "Invalid request method"})
 
-
-from django.views.decorators.csrf import csrf_exempt
-import json
-
 @csrf_exempt
-def niaa_view(request):
+def save_chat_view(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-
-        return JsonResponse(data)
-    else:
-        return JsonResponse({"error": "Invalid request method"})
-
-
+        user_message = json.loads(request.body.decode('utf-8'))["user_message"]
+        bot_response = json.loads(request.body.decode('utf-8'))['bot_response']
+        
+        with connection.cursor() as cursor:
+                cursor.execute(
+                    "INSERT INTO myapp_chats (user_chat, bot) VALUES (%s, %s)",
+                    [user_message, bot_response]
+                )
+        
+        return JsonResponse({'response':'Chat saved successfully.'})
+    
+    return JsonResponse({'response':'Invalid request method.'})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('niaa/',niaa_view)
+    path('niaa/',niaa_view),
+    path('save/',save_chat_view)
 ]
