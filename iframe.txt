@@ -1,0 +1,48 @@
+<style>
+  .chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .chatbot-container iframe {
+    width: 300px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+  }
+        
+
+</style>
+
+   <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  
+    var minimizeBtn = document.querySelector('.minimize-button');
+    var chatbotContainer = document.querySelector('.chatbot-container');
+    var chatbotIframe = chatbotContainer.querySelector('iframe');
+    var isMinimized = false;
+
+
+    minimizeBtn.addEventListener('click', function() {
+      if (isMinimized) {
+        // If chatbot is minimized, restore it
+        chatbotContainer.style.height = 'auto';
+        chatbotIframe.style.display = 'block';
+        minimizeBtn.innerText = '-';
+      } else {
+        // If chatbot is not minimized, minimize it
+        chatbotContainer.style.height = '40px'; // Set a desired height when minimized
+        chatbotIframe.style.display = 'none';
+        minimizeBtn.innerText = '+';
+      }
+      isMinimized = !isMinimized;
+    });
+  });
+</script>
+
+      
+      <div class="chatbot-container">
+  <button class="minimize-button">-</button>
+  <iframe src="https://csb-58sjgt-q5gf7totr-sherwin-roger0.vercel.app/" frameborder="0"></iframe>
+ 
+</div>
